@@ -21,6 +21,11 @@ FROM customers
 INNER JOIN orders
 ON id=customer_id
 
+SELECT*
+FROM customers
+INNER JOIN orders
+ON id=customer_id
+
 --Left join
 --show info of all customers who have ordered and didnt ordered
 SELECT
@@ -79,3 +84,70 @@ SELECT
 FROM orders as o
 FULL JOIN customers as c
 ON c.id=o.customer_id
+
+--LEFT ANTI JOIN: RETURN ALL ROWS WHICH ARE PRESENT IN LEFT TABLE BUT HAS NO MATCH IN RIGHT TABLE
+-- MORE SPECIFICALLY VALUES PRESENT ONLY IN LEFT TABLE
+
+--GET ALL CUSTOMERS WHO HASENT PLACED ORDER
+-- BELOW IS EXAMPLE OF LEFT ANTI JOIN
+SELECT* 
+FROM customers
+LEFT JOIN orders
+ON orders.customer_id=customers.id
+WHERE orders.customer_id IS NULL
+
+--RIGHT ANTI JOIN: IT IS TOTALLY OPPOSITE OF LEFT ANTI JOIN
+-- GET ORDERS WHO HAS NO CUSTOMERS
+SELECT*
+FROM customers as c
+RIGHT JOIN orders as o
+ON o.customer_id=c.id
+WHERE c.id is NULL
+
+--SAME RESULT WITH LEFT JOIN
+SELECT* 
+FROM orders as o
+LEFT JOIN customers as c
+ON o.customer_id=c.id
+where c.id is null
+
+--FULL ANTI JOIN:
+--SELECT CUSTOMERS WITHOUT ORDERS OR ORDERS WITHOUT CUSTOMERS
+
+SELECT*
+FROM customers as c
+FULL JOIN orders as o
+ON  o.customer_id=c.id
+WHERE o.customer_id IS NULL OR c.id IS NULL
+
+--full anti join
+SELECT*
+FROM customers as c
+LEFT JOIN orders as o
+ON c.id=o.customer_id
+WHERE o.customer_id is not null
+
+SELECT*
+FROM customers as c
+FULL JOIN orders as o
+ON  o.customer_id=c.id
+WHERE o.customer_id IS NOT NULL AND c.id IS NOT NULL
+-- below is not full anti join
+SELECT*
+FROM customers
+INNER JOIN orders
+ON id=customer_id
+
+--cross join: it is used to generate all possible combinations(cartesian products) of both table
+-- syntax: SELECT* FROM TABLE1 CROSS JOIN TABLE2
+
+SELECT* 
+FROM customers
+CROSS JOIN orders
+
+
+---- joining multiple tables
+USE SalesDB
+
+SELECT*
+FROM Orders
