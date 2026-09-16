@@ -148,6 +148,27 @@ CROSS JOIN orders
 
 ---- joining multiple tables
 USE SalesDB
-
-SELECT*
-FROM Orders
+/* "Task: Using SalesDB, Retrieve a list of all orders, along with the
+related customer, product, and employee details. For each order, display: 
+Order ID, Customer's name, Product name, Sales, Price, Sales person's name*/
+SELECT
+	 o.OrderID,
+	 o.Sales,
+	 c.FirstName AS CUSTOMERS_FIRST_NAME,
+	 c.LastName AS CUSTOMERS_LAST_NAME,
+	 p.Product,
+	 p.Price,
+	 e.FirstName AS EMP_FIRST_NAME,
+	 e.LastName AS EMP_LAST_NAME
+FROM Sales.Orders AS o
+LEFT JOIN Sales.Customers AS c
+ON o.CustomerID=c.CustomerID
+LEFT JOIN Sales.Products AS p
+ON o.ProductID=p.ProductID
+LEFT JOIN Sales.Employees AS e
+ON o.SalesPersonID=e.EmployeeID
+SELECT* FROM Sales.Orders
+SELECT* FROM Sales.Customers
+SELECT* FROM Sales.Employees
+SELECT* FROM Sales.OrdersArchive
+SELECT* FROM Sales.Products

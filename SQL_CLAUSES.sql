@@ -243,7 +243,7 @@ FROM  customers
 SELECT TOP 3*
 FROM customers
 */
-
+--You can use order by only once in a query and that is at end of query
 --select top three customers with highest score
 /*
 SELECT TOP 3*
