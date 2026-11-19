@@ -22,7 +22,6 @@ SELECT product_name, price   -- (SELECT Clause)FROM inventory               -- (
 * The Entire Block is the Query. It represents the ultimate goal: “Show me the names and prices of low-stock products, sorted from most expensive to cheapest.”
 * Each Line is an individual Clause. Each line has a specific, isolated task—like defining the source table (FROM) or setting a filter constraint (WHERE).
 
-Are you practicing writing your own SQL scripts, or are you preparing for a database exam or interview? Let me know so I can tailor the next examples for you.
 
 */
 
